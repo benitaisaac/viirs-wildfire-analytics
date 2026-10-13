@@ -124,7 +124,10 @@ Our workflow included:
 
 **Key finding:** Log-transforming FRP improved model performance, particularly for simpler linear approaches.
 
-**[ADD MODEL RESULTS]**
+<img width="869" height="357" alt="Data230-Final Presentation (3)" src="https://github.com/user-attachments/assets/7418e74c-8b82-417d-80d4-2bc434885f67" />
+
+<img width="793" height="373" alt="Data230-Final Presentation (4)" src="https://github.com/user-attachments/assets/d8c1011f-f782-43fb-8a50-bb552a7c0691" />
+
 
 Include a table comparing the strongest models and their evaluation metrics, such as MAE, RMSE, and R², once verified from the notebooks.
 
@@ -139,9 +142,15 @@ To make the analysis accessible, the team developed dashboards using four visual
 | Power BI | Summary reporting and analytical dashboards |
 | Streamlit | Interactive exploration application |
 
-**[ADD SCREENSHOTS HERE]**
+<img width="2497" height="1181" alt="image" src="https://github.com/user-attachments/assets/11ebee60-332c-42bb-902f-1029e4b03bfb" />
 
-Include screenshots of your strongest dashboard, geographic visualization, and model results.
+<img width="1114" height="844" alt="wildfire_dashboard_plotly" src="https://github.com/user-attachments/assets/630ee685-46d3-47eb-9b7e-fbb387f48e5d" />
+
+<img width="1626" height="909" alt="Data230-Final Presentation (1)" src="https://github.com/user-attachments/assets/1aa5545c-42d0-450a-9091-a2a6a6cc6493" />
+
+<img width="1299" height="737" alt="Data230-Final Presentation (2)" src="https://github.com/user-attachments/assets/041199e4-c993-4b5a-b3e0-8daa84b47711" />
+
+
 
 ---
 
