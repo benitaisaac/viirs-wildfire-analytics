@@ -14,6 +14,12 @@ Analyzing approximately **22 million NASA VIIRS satellite records** to investiga
 <img width="1114" height="844" alt="wildfire_dashboard_plotly" src="https://github.com/user-attachments/assets/aa6f47e0-a923-4e38-a7d9-90f9ceb9286f" />
 
 
+
+https://github.com/user-attachments/assets/012caf4e-f1d3-4aea-b486-f1598b91de72
+
+
+
+
 Developed with Plotly Dash to visualize temporal wildfire trends, geographic detection density, and fire intensity patterns. Users can filter observations by confidence level, FRP range, and season.
 
 
