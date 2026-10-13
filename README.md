@@ -11,8 +11,6 @@ Analyzing approximately **22 million NASA VIIRS satellite records** to investiga
 
 ## Interactive Wildfire Dashboard
 
-![Global Wildfire Analysis Dashboard](assets/wildfire-dashboard.png)
-
 <img width="1114" height="844" alt="wildfire_dashboard_plotly" src="https://github.com/user-attachments/assets/aa6f47e0-a923-4e38-a7d9-90f9ceb9286f" />
 
 
