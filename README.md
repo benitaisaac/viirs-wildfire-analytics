@@ -1,152 +1,203 @@
-# 🔥 VIIRS Wildfire Analytics Project
+# 🔥 VIIRS Wildfire Analytics
+### Large-Scale Satellite Data Analysis & Machine Learning
+
+**Python | NVIDIA RAPIDS | cuDF | Scikit-learn | Plotly | Tableau | Power BI | Streamlit**
+
+Analyzing approximately **22 million NASA VIIRS satellite records** to investigate global wildfire patterns, build predictive models, and develop interactive visualizations.
+
+*Graduate group project | San José State University*
+
+---
+
+## Interactive Wildfire Dashboard
+
+![Global Wildfire Analysis Dashboard](assets/wildfire-dashboard.png)
+
+<img width="1114" height="844" alt="wildfire_dashboard_plotly" src="https://github.com/user-attachments/assets/aa6f47e0-a923-4e38-a7d9-90f9ceb9286f" />
+
+
+Developed with Plotly Dash to visualize temporal wildfire trends, geographic detection density, and fire intensity patterns. Users can filter observations by confidence level, FRP range, and season.
+
+
+---
 
 ## Project Overview
 
-This project analyzes global wildfire activity using NASA VIIRS satellite data from 2024–2025. Our goal is to identify spatial and temporal wildfire patterns and explore how well machine learning models can predict wildfire occurrences.
+Wildfires pose significant environmental and public safety challenges. Satellite imagery provides valuable data for understanding when and where fires occur, but analyzing millions of observations requires efficient data processing and careful modeling.
 
-We combine GPU-accelerated data processing (RAPIDS), exploratory data analysis (EDA), and interactive dashboards to uncover insights and support future predictive modeling.
+This project explores global wildfire activity using NASA's Visible Infrared Imaging Radiometer Suite (VIIRS) data from 2024–2025.
 
----
+We developed an analytical workflow combining:
 
-## Research Question
+- **Large-scale data engineering:** Processing millions of satellite observations with NVIDIA RAPIDS.
+- **Exploratory data analysis:** Investigating geographic distributions, temporal patterns, and fire intensity.
+- **Machine learning:** Comparing baseline and enhanced models to understand wildfire-related patterns and predict fire radiative power (FRP).
+- **Data visualization:** Developing interactive dashboards to communicate findings.
 
-**What wildfire patterns can be identified from VIIRS satellite data between 2024 and 2025, and how well can a machine learning model trained on historical data predict wildfire occurrences compared to actual events in 2025?**
+### Research Question
 
----
+What spatial and temporal patterns can be identified from VIIRS satellite data, and how effectively can machine learning models capture relationships in wildfire observations?
 
-## 📊 Dataset
+## Project at a Glance
 
-* **Source:** NASA VIIRS (Visible Infrared Imaging Radiometer Suite)  
-* **Time Range:** 2024–2025  
-* **Size:** ~22 million records  
-
-### Access Instructions
-
-The dataset was downloaded from the source and sampled. All intermediary data is stored externally on Google Drive due to its size:  
-👉 https://drive.google.com/file/d/17lHVkabbMYZ8FH9FFHpUXV9TBRMjlCPW/view?usp=sharing  
-
-**Steps:**
-1. Download the dataset  
-2. Place it inside the `data/` folder in this repository  
-
----
-
-## ⚙️ Data Processing (RAPIDS)
-
-We used NVIDIA RAPIDS to accelerate data processing on the GPU.
-
-### Key Steps
-
-* Converted data into GPU DataFrames (cuDF)  
-* Parsed and transformed date fields  
-* Created a **"period" feature** (bi-monthly seasonal grouping)  
-* Filtered dataset to include **nominal and high-confidence fires only**  
-* Performed large-scale aggregations (groupby operations)  
-
-### Why RAPIDS?
-
-* Significantly faster than CPU-based pandas  
-* Enabled processing of tens of millions of rows efficiently  
-* Reduced runtime from seconds/minutes to milliseconds for key operations  
+| Category | Details |
+|---|---|
+| Dataset | NASA VIIRS satellite fire detections |
+| Scale | Approximately 22 million records |
+| Period | 2024–2025 |
+| Processing | NVIDIA RAPIDS, cuDF, Python |
+| Modeling | Regression, tree-based models, PCA, hyperparameter tuning |
+| Visualization | Plotly Dash, Tableau, Power BI, Streamlit |
 
 ---
 
-## 🧹 Data Cleaning & Preparation
+## My Contributions
 
-* Removed low-confidence detections to reduce noise  
-* Converted date fields into datetime format  
-* Engineered time-based features (month, seasonal period)  
-* Aggregated spatial data into latitude/longitude bins  
+As part of a four-person graduate team at San José State University, I was responsible for three core components of the wildfire analytics pipeline:
 
-### Challenges
+### GPU-Accelerated Data Processing | NVIDIA RAPIDS
+- Implemented GPU-accelerated data processing workflows using NVIDIA RAPIDS and cuDF to support analysis of a large-scale satellite dataset.
+- Applied GPU-based transformations and aggregations to prepare wildfire detection data for downstream analysis and visualization.
 
-* Handling large dataset size without crashing sessions  
-* GPU memory limitations  
-* Ensuring consistency when converting between cuDF and pandas  
+### Machine Learning | Enhanced Models
+- Developed and evaluated enhanced machine learning models for predicting Fire Radiative Power (FRP).
+- Explored feature engineering, data transformations, and hyperparameter tuning to improve predictive performance beyond baseline approaches.
+- Analyzed model performance to understand how different preprocessing and modeling decisions affected predictive accuracy.
 
----
+### Interactive Data Visualization | Plotly Dash
+- Developed an interactive wildfire analytics dashboard using Plotly Dash to explore global fire activity and geographic distributions.
+- Implemented filters for confidence level, FRP range, and season, enabling interactive exploration of wildfire observations.
+- Created time-series visualizations, geospatial heatmaps, and summary metrics to communicate wildfire activity patterns.
 
-## 📈 Exploratory Data Analysis (EDA)
-
-We created multiple visualizations to explore wildfire behavior.
-
-### Key Visualizations
-
-* Global wildfire hotspot map  
-* Fire detections over time (trend analysis)  
-* Seasonal wildfire activity (period-based bar chart)  
-* Fire intensity (FRP) distribution  
-* Spatial density heatmap  
-* Confidence vs. fire occurrence  
+**Collaboration:** This project was completed with three teammates who contributed to baseline modeling, data cleaning, exploratory analysis, and additional dashboards in Tableau, Streamlit, and Power BI.
 
 ---
 
-## 🔍 Key Insights
+## Technical Approach
 
-### 1. Granularity Matters
-Monthly aggregation is insufficient to capture wildfire trends.  
-Daily-level data reveals meaningful variation that is otherwise lost.  
+### 1. Data Processing & Engineering
 
-### 2. Weak Feature Correlation
-There is no strong linear correlation between features and FRP.  
-This limits model performance and suggests complex, non-linear relationships.  
+The dataset contained approximately 22 million observations, making efficient processing an important consideration.
 
-### 3. Data Ambiguity
-Error distributions of fire classes show high variability and outliers.  
-This ambiguity contributes to model error and reflects limitations in the dataset.  
+We used **NVIDIA RAPIDS and cuDF** to perform GPU-accelerated transformations and aggregations.
 
-### 4. Target Transformation Matters
-Log transformation of FRP significantly improves model performance, especially for simpler models like linear regression.  
-This indicates the original target distribution is highly skewed and benefits from normalization.  
+Key processing steps included:
+
+- Filtering low-confidence fire detections.
+- Converting and standardizing date fields.
+- Engineering temporal features such as month and seasonal period.
+- Aggregating geographic observations into latitude/longitude bins.
+- Managing conversions between GPU and CPU DataFrames.
+
+**Technical challenges:** Working with large datasets introduced memory constraints and required careful handling of data transformations.
+
+### 2. Exploratory Data Analysis
+
+We investigated wildfire activity across geography, time, and fire intensity.
+
+Our analyses included:
+
+- Global wildfire hotspot distributions.
+- Daily and seasonal detection patterns.
+- Fire radiative power (FRP) distributions.
+- Spatial density maps.
+- Relationships among satellite measurements and wildfire characteristics.
+
+**Key findings:**
+
+- Daily aggregation revealed meaningful variation that broader monthly summaries obscured.
+- Weak linear correlations between features and FRP suggested that more complex relationships may be present.
+- Outliers and variability in fire measurements presented challenges for predictive modeling.
+
+### 3. Machine Learning
+
+We evaluated multiple modeling approaches to understand the influence of feature engineering and model complexity.
+
+Our workflow included:
+
+- Establishing baseline models.
+- Engineering temporal and categorical features.
+- Applying logarithmic transformations to highly skewed FRP values.
+- Comparing linear and tree-based methods.
+- Exploring principal component analysis (PCA).
+- Using grid search for hyperparameter tuning.
+
+**Key finding:** Log-transforming FRP improved model performance, particularly for simpler linear approaches.
+
+**[ADD MODEL RESULTS]**
+
+Include a table comparing the strongest models and their evaluation metrics, such as MAE, RMSE, and R², once verified from the notebooks.
+
+### 4. Interactive Data Visualization
+
+To make the analysis accessible, the team developed dashboards using four visualization tools.
+
+| Tool | Purpose |
+|---|---|
+| Tableau | Visual exploration of wildfire distributions and correlations |
+| Plotly Dash | Interactive spatial and temporal analysis |
+| Power BI | Summary reporting and analytical dashboards |
+| Streamlit | Interactive exploration application |
+
+**[ADD SCREENSHOTS HERE]**
+
+Include screenshots of your strongest dashboard, geographic visualization, and model results.
 
 ---
 
-## 🤖 Modeling
+## Project Structure
 
-### 📁 Project Structure
+```text
+viirs-wildfire-analytics/
+├── EDA Notebooks/        # Exploratory data analysis
+├── PCA/                  # Principal component analysis
+├── baseline/             # Baseline ML models
+├── enhanced_models/      # Feature engineering and tuned models
+├── dashboards/           # Interactive visualizations
+├── data/                 # Data files
+├── cleaning_overview.py  # Data cleaning workflow
+├── smaller_dataset.py    # Dataset preparation
+└── README.md
+```
 
-* `baseline/` → Baseline modeling (minimal feature engineering)  
-* `enhanced_models/` → Models with feature engineering applied  
-* `PCA/` → PCA exploration conducted prior to modeling  
+## Data & Reproducibility
+
+**Data source:** NASA VIIRS satellite fire detection data, 2024–2025.
+
+Due to the size of the original dataset, intermediate data files are stored separately.
+
+[Access the project dataset](https://drive.google.com/file/d/17lHVkabbMYZ8FH9FFHpUXV9TBRMjlCPW/view?usp=sharing)
+
+To explore the code:
+
+1. Clone this repository.
+2. Download the required dataset.
+3. Place the appropriate files in the `data/` directory.
+4. Open the relevant analysis or modeling notebooks.
+
+*Environment-specific dependencies and execution instructions can be added for each component.*
+
+---
+
+## Lessons Learned
+
+This project demonstrated the importance of combining efficient data infrastructure with thoughtful statistical analysis.
+
+Major takeaways included:
+
+- **Scalability:** Large datasets benefit from GPU-accelerated processing, but memory management remains important.
+- **Feature engineering:** Transformations and feature selection can meaningfully affect model performance.
+- **Data granularity:** The choice of aggregation level influences which patterns become visible.
+- **Communication:** Interactive dashboards help translate complex datasets into understandable findings.
 
 ---
 
-### ⚙️ Modeling Strategy
+## Team & Acknowledgments
 
-**Feature Engineering**
-* Log transform FRP (handle skew)  
-* Extract month (capture seasonality)  
-* Encode categorical variables  
-* Remove low-value features  
+Originally developed as a collaborative graduate project at San José State University.
 
-**Objective**
-* Evaluate impact of:
-  * Feature engineering  
-  * Model complexity  
-  * Hyperparameter tuning  
+[View the original team repository](https://github.com/svtlys/viirs-wildfire-analytics)
 
-**Modeling Approach**
-* Compare baseline vs enhanced models  
-* Linear vs tree-based methods  
-* Apply Grid Search for tuning  
-* Use PCA in selected pipelines  
-* Stratified train-test split to preserve target distribution  
+All original contributors are acknowledged through the shared repository and preserved Git commit history.
 
----
-
-## 📊 Dashboards
-
-We developed **four dashboards using different tools**:
-
-* **Tableau** – Visual analytics & correlations  
-  👉 https://public.tableau.com/app/profile/angela.wei/viz/WildfireHotspotTemperatureandBrightnessDistributions/Dashboard  
-
-* **Plotly Dash** – Interactive spatial & temporal analysis  
-
-* **Power BI** – Business-style reporting dashboard  
-
-* **Streamlit** – Lightweight interactive app  
-
-All dashboard implementations can be found in the `dashboards/` folder.
-
----
+This fork contains additional documentation and improvements for my individual project portfolio.
