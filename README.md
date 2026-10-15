@@ -126,9 +126,6 @@ Our workflow included:
 
 <img width="793" height="373" alt="Data230-Final Presentation (4)" src="https://github.com/user-attachments/assets/d8c1011f-f782-43fb-8a50-bb552a7c0691" />
 
-
-Include a table comparing the strongest models and their evaluation metrics, such as MAE, RMSE, and R², once verified from the notebooks.
-
 ### 4. Interactive Data Visualization
 
 To make the analysis accessible, the team developed dashboards using four visualization tools.
@@ -182,8 +179,7 @@ To explore the code:
 3. Place the appropriate files in the `data/` directory.
 4. Open the relevant analysis or modeling notebooks.
 
-*Environment-specific dependencies and execution instructions can be added for each component.*
-
+*
 ---
 
 ## Lessons Learned
