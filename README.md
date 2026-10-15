@@ -120,7 +120,7 @@ Our workflow included:
 - Exploring principal component analysis (PCA).
 - Using grid search for hyperparameter tuning.
 
-**Key finding:** Log-transforming FRP improved model performance, particularly for simpler linear approaches.
+**Key finding:** Modeling log-transformed FRP raised R² across all models, most sharply for linear regression (0.15 → 0.53), though XGBoost remained strongest (0.65), and because the enhanced models also added features and use log-scale metrics, the gains aren’t a direct comparison to the baseline.
 
 <img width="869" height="357" alt="Data230-Final Presentation (3)" src="https://github.com/user-attachments/assets/7418e74c-8b82-417d-80d4-2bc434885f67" />
 
